@@ -1,4 +1,4 @@
-package com.example.demoCourseWork;
+package com.example.demoCourseWork.Controllers;
 
 import java.io.*;
 import javax.servlet.http.*;

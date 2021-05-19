@@ -47,6 +47,8 @@ public class Lot {
         return owner.equals(user);
     }
 
+    public void setStatus(boolean value) { isActive = value;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
