@@ -16,12 +16,12 @@
             <div class="max-w-md mx-auto">
                 <div class="divide-y divide-gray-200">
                     <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                        <p><h2>Welcome the auction!</b></h2></p>
+                        <p><h2>Welcome to the auction!</h2></p>
                         <ul class="list-disc space-y-2">
 
                             <li class="flex items-start">
                               <span class="h-6 flex items-center sm:h-7">
-                                  <form action = "Creators/ActorCreator.jsp" >
+                                  <form action = "Creators/ActorCreator.jsp" method="post" >
                                     <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Sign in</button>
                                   </form>
                               </span>
@@ -29,7 +29,7 @@
 
                             <li class="flex items-start">
                               <span class="h-6 flex items-center sm:h-7">
-                                <form action = "Creators/MovieCreator.jsp">
+                                <form action = "Creators/MovieCreator.jsp" method="post">
                                   <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Log in</button>
                                 </form>
                               </span>
@@ -37,7 +37,7 @@
 
                             <li class="flex items-start">
                               <span class="h-6 flex items-center sm:h-7">
-                                <form action = "deleter">
+                                <form action = "deleter" method="get">
                                   <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">View lots</button>
                                 </form>
                               </span>

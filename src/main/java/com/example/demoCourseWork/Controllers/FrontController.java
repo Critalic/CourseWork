@@ -1,39 +1,35 @@
 package com.example.demoCourseWork.Controllers;
 
-import com.example.demoCourseWork.Controllers.Factory.RequestDecoratorFactory;
-
-import java.io.*;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-@WebServlet(name = "FrontControllerServlet", urlPatterns = {"/tenders/*"})
+@WebServlet(name = "frontController", urlPatterns = "/lots/*")
 public class FrontController extends HttpServlet {
-
-    private RequestDecoratorFactory factory;
+    private StrategySelector strategySelector;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        factory = (RequestDecoratorFactory) config.getServletContext().getAttribute("factory");
+        this.strategySelector = (StrategySelector) config.getServletContext().getAttribute("selector");
     }
 
-    private String getPathFromRequest(HttpServletRequest request) {
-        String pathInfo = request.getPathInfo();
-        if (pathInfo == null) { pathInfo = "/"; }
-        return pathInfo;
+    private String getPath (HttpServletRequest reqest) {
+        String answer = reqest.getPathInfo();
+        if(answer == null) answer = "/";
+        return answer;
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        factory.getDecoratorForPath(getPathFromRequest(request))
-                .executeGet(request, response);
-
+    protected void doGet(HttpServletRequest reqest, HttpServletResponse response) throws ServletException, IOException {
+        strategySelector.getStrategy(getPath(reqest)).dewGet(reqest, response);
     }
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        factory.getDecoratorForPath(getPathFromRequest(request))
-                .executePost(request, response);
 
+    @Override
+    protected void doPost(HttpServletRequest reqest, HttpServletResponse response) throws ServletException, IOException {
+        strategySelector.getStrategy(getPath(reqest)).dewPost(reqest, response);
     }
 }
