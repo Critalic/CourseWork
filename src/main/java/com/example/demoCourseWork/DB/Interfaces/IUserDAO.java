@@ -7,6 +7,6 @@ import com.example.demoCourseWork.Exceptions.NoIDException;
 import com.example.demoCourseWork.models.User;
 
 public interface IUserDAO {
-    User getUser(String login) throws DBError, NoIDException;
+    User getUser(String login) throws NoIDException;
     void createUser(User user) throws DBError, AlreadyExistsError, InvalidEmailException;
 }

@@ -2,7 +2,6 @@ package com.example.demoCourseWork.DB.DAOImplementations;
 
 import com.example.demoCourseWork.DB.DataBases;
 import com.example.demoCourseWork.DB.Interfaces.ILotOfferDAO;
-import com.example.demoCourseWork.Exceptions.DBError;
 import com.example.demoCourseWork.Exceptions.NoIDException;
 import com.example.demoCourseWork.models.Lot;
 import com.example.demoCourseWork.models.LotOffer;
@@ -15,7 +14,7 @@ public class LotOfferDAO implements ILotOfferDAO {
     private HashSet<LotOffer> lotOffers = DataBases.getLotOffers();
 
     @Override
-    public void createLotOffer(LotOffer offer) throws DBError {
+    public void createLotOffer(LotOffer offer) {
         lotOffers.add(offer);
 
         for(Lot lot:DataBases.getLots()) {
@@ -27,7 +26,7 @@ public class LotOfferDAO implements ILotOfferDAO {
     }
 
     @Override
-    public List<LotOffer> getAllFromLot(String id) throws DBError, NoIDException {
+    public List<LotOffer> getAllFromLot(String id) throws NoIDException {
 
         for(Lot lot : DataBases.getLots()) {
             if(lot.getId().equals(id)) return lot.getOffers();

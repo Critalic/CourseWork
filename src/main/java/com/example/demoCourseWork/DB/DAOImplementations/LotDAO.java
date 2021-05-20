@@ -18,7 +18,7 @@ public class LotDAO implements ILotDAO {
     }
 
     @Override
-    public Lot get(String id) throws DBError, NoIDException {
+    public Lot get(String id) throws NoIDException {
         for(Lot lot : lots) {
             if(id.equals(lot.getId())) return lot;
         }
@@ -26,7 +26,7 @@ public class LotDAO implements ILotDAO {
     }
 
     @Override
-    public String getLotOwner(String id) throws NoIDException, DBError {
+    public String getLotOwner(String id) throws NoIDException {
         for(Lot lot : lots) {
             if(id.equals(lot.getId())) return lot.getOwner();
         }
@@ -34,14 +34,14 @@ public class LotDAO implements ILotDAO {
     }
 
     @Override
-    public List<Lot> getAll() throws DBError {
+    public List<Lot> getAll() {
         ArrayList<Lot> answer = new ArrayList<>();
         answer.addAll(lots);
         return answer;
     }
 
     @Override
-    public List<Lot> getAllWithName(String name) throws DBError {
+    public List<Lot> getAllWithName(String name) {
         ArrayList<Lot> answer = new ArrayList<>();
         for(Lot lot : lots) {
             if(lot.getName().equals(name)) answer.add(lot);
@@ -50,7 +50,7 @@ public class LotDAO implements ILotDAO {
     }
 
     @Override
-    public List<Lot> getAllWithOwner(String owner) throws DBError {
+    public List<Lot> getAllWithOwner(String owner) {
         ArrayList<Lot> answer = new ArrayList<>();
         for(Lot lot : lots) {
             if(lot.getName().equals(owner)) answer.add(lot);

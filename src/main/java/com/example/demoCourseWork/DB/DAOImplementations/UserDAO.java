@@ -13,7 +13,7 @@ public class UserDAO implements IUserDAO {
     private static final HashSet<User> users = DataBases.getUsers();
 
     @Override
-    public void createUser(User user) throws DBError, InvalidEmailException, InvalidEmailException {
+    public void createUser(User user) throws DBError, InvalidEmailException {
         EmailValidator emailValidator = new EmailValidator();
         emailValidator.validate(user.getLogin());
 

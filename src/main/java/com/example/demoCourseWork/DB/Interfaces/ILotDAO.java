@@ -8,12 +8,12 @@ import com.example.demoCourseWork.models.Lot;
 import java.util.List;
 
 public interface ILotDAO {
-    Lot get(String id) throws DBError, NoIDException;
-    String getLotOwner(String tenderId) throws NoIDException, DBError;
+    Lot get(String id) throws NoIDException;
+    String getLotOwner(String tenderId) throws NoIDException;
 
     List<Lot> getAll() throws DBError;
-    List<Lot> getAllWithName(String name) throws DBError;
-    List<Lot> getAllWithOwner(String owner) throws DBError;
+    List<Lot> getAllWithName(String name);
+    List<Lot> getAllWithOwner(String owner);
 
     void createLot(Lot lot) throws DBError;
     void updateStatus(String tenderId, boolean value) throws NoIDException, DBError;

@@ -7,6 +7,6 @@ import com.example.demoCourseWork.models.LotOffer;
 import java.util.List;
 
 public interface ILotOfferDAO {
-    void createLotOffer(LotOffer offer) throws DBError;
-    List<LotOffer> getAllFromLot(String id) throws DBError, NoIDException;
+    void createLotOffer(LotOffer offer);
+    List<LotOffer> getAllFromLot(String id) throws NoIDException;
 }
