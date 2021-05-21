@@ -4,12 +4,12 @@
 <html>
 <head>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <title>Film library</title>
+    <title>Auction</title>
 
 </head>
 <body >
 
-<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+<div class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 ...">
     <div class="relative py-3 sm:max-w-xl sm:mx-auto">
         <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
         <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
@@ -21,15 +21,15 @@
 
                             <li class="flex items-start">
                               <span class="h-6 flex items-center sm:h-7">
-                                  <form action = "Creators/ActorCreator.jsp" method="post" >
-                                    <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Sign in</button>
+                                  <form action = "${pageContext.request.contextPath}/lots/signUp" method="get" >
+                                    <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Sign up</button>
                                   </form>
                               </span>
                             </li><br>
 
                             <li class="flex items-start">
                               <span class="h-6 flex items-center sm:h-7">
-                                <form action = "Creators/MovieCreator.jsp" method="post">
+                                <form action = "${pageContext.request.contextPath}/lots/logIn" method="get">
                                   <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Log in</button>
                                 </form>
                               </span>
@@ -37,7 +37,7 @@
 
                             <li class="flex items-start">
                               <span class="h-6 flex items-center sm:h-7">
-                                <form action = "deleter" method="get">
+                                <form action = "${pageContext.request.contextPath}/lots/viewLots" method="get">
                                   <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">View lots</button>
                                 </form>
                               </span>

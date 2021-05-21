@@ -2,6 +2,7 @@ package com.example.demoCourseWork.DB.DAOImplementations;
 
 import com.example.demoCourseWork.DB.DataBases;
 import com.example.demoCourseWork.DB.Interfaces.IUserDAO;
+import com.example.demoCourseWork.Exceptions.AlreadyExistsError;
 import com.example.demoCourseWork.Exceptions.DBError;
 import com.example.demoCourseWork.Exceptions.InvalidEmailException;
 import com.example.demoCourseWork.Validators.EmailValidator;
@@ -13,14 +14,14 @@ public class UserDAO implements IUserDAO {
     private static final HashSet<User> users = DataBases.getUsers();
 
     @Override
-    public void createUser(User user) throws DBError, InvalidEmailException {
+    public void createUser(User user) throws InvalidEmailException, AlreadyExistsError {
         EmailValidator emailValidator = new EmailValidator();
         emailValidator.validate(user.getLogin());
 
         int initialSize = users.size();
         users.add(user);
         if(initialSize == users.size()) {
-            throw new DBError("This e-mail is occupied");
+            throw new AlreadyExistsError("This e-mail is occupied");
         }
     }
 

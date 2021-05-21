@@ -54,19 +54,22 @@ public class LotService {
         }
     }
 
-    public void createNewLot(String name, String owner, String about)
+    public void createNewLot(String name, String owner, String about, String startPrice)
             throws IllegalArgumentException, DBError {
         name = EmptyValidator.checkIfEmpty(name, "Name");
         about = EmptyValidator.checkIfEmpty(about, "About");
 
-        Lot lot = new Lot(
-                owner,
-                about,
-                null,
-                "",
-                name,
-                true
-        );
+        Lot lot = new Lot(owner, about, name, startPrice, true);
+
+        daoFactory.getLotDAO().createLot(lot);
+    }
+
+    public void createNewLot(String name, String owner, String about, double startPrice)
+            throws IllegalArgumentException, DBError {
+        name = EmptyValidator.checkIfEmpty(name, "Name");
+        about = EmptyValidator.checkIfEmpty(about, "About");
+
+        Lot lot = new Lot(owner, about, name, startPrice, true);
 
         daoFactory.getLotDAO().createLot(lot);
     }

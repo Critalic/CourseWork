@@ -6,7 +6,7 @@ import com.example.demoCourseWork.Services.UserService;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.io.IOException;
+
 
 public class InitListener implements ServletContextListener {
     @Override

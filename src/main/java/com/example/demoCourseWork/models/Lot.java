@@ -1,22 +1,35 @@
 package com.example.demoCourseWork.models;
 
+import com.example.demoCourseWork.Services.LotIDGenerator;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lot {
     private String owner;
     private String info;
-    private List<LotOffer> offers;
+    private double startPrice;
+    private List<LotOffer> offers = new ArrayList<>();
     private String id;
     private String name;
     private boolean isActive;
 
-    public Lot(String owner, String info, List<LotOffer> offers, String id, String name, boolean isActive) {
+    public Lot(String owner, String info, String name, String startPrice ,boolean isActive) {
         this.owner = owner;
         this.info = info;
-        this.offers = offers;
-        this.id = id;
+        this.id = LotIDGenerator.generateID(name, owner, info);
         this.name = name;
         this.isActive = isActive;
+        this.startPrice = Double.parseDouble(startPrice);
+    }
+
+    public Lot(String owner, String info, String name, double startPrice ,boolean isActive) {
+        this.owner = owner;
+        this.info = info;
+        this.id = LotIDGenerator.generateID(name, owner, info);
+        this.name = name;
+        this.isActive = isActive;
+        this.startPrice = startPrice;
     }
 
     public String getOwner() {
@@ -31,6 +44,8 @@ public class Lot {
         return offers;
     }
 
+    public void addOffer (LotOffer offer) { this.offers.add(offer);}
+
     public String getName() {
         return name;
     }
@@ -41,6 +56,14 @@ public class Lot {
 
     public boolean isActive() {
         return isActive;
+    }
+
+    public double getPrice() {
+        double price =startPrice;
+        for(LotOffer lotOffer : this.getOffers()) {
+            if(lotOffer.getMoney()>price) price = lotOffer.getMoney();
+        }
+        return price;
     }
 
     public boolean isOwner(String user) {
@@ -56,12 +79,7 @@ public class Lot {
 
         Lot lot = (Lot) o;
 
-        if (isActive() != lot.isActive()) return false;
-        if (!getOwner().equals(lot.getOwner())) return false;
-        if (!getInfo().equals(lot.getInfo())) return false;
-        if (!getOffers().equals(lot.getOffers())) return false;
-        if (!getId().equals(lot.getId())) return false;
-        return getName().equals(lot.getName());
+        return getId().equals(lot.getId());
     }
 
     @Override
@@ -71,7 +89,6 @@ public class Lot {
         result = 47 * result + getOffers().hashCode();
         result = 47 * result + getId().hashCode();
         result = 47 * result + getName().hashCode();
-        result = 47 * result + (isActive() ? 1 : 0);
         return result;
     }
 }

@@ -6,25 +6,25 @@ public class LotOffer {
     private int cost;
     private String lotId;
 
-    public LotOffer(String owner, String text, int cost, String id) {
+    public LotOffer(String owner, String text, int cost, String lotId) {
         this.owner = owner;
         this.text = text;
         this.cost = cost;
-        this.lotId = id;
+        this.lotId = lotId;
     }
 
-    public LotOffer(String owner, String text, Long cost, String id) {
+    public LotOffer(String owner, String text, Long cost, String lotId) {
         this.owner = owner;
         this.text = text;
         this.cost = Math.toIntExact(cost);
-        this.lotId = id;
+        this.lotId = lotId;
     }
 
-    public LotOffer(String owner, String text, String cost, String id) {
+    public LotOffer(String owner, String text, String cost, String lotId) {
         this.owner = owner;
         this.text = text;
         this.cost = Integer.parseInt(cost);
-        this.lotId = id;
+        this.lotId = lotId;
     }
 
     public String getLotId() {

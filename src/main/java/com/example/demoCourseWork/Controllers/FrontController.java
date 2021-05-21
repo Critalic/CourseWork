@@ -1,5 +1,9 @@
 package com.example.demoCourseWork.Controllers;
 
+import com.example.demoCourseWork.DB.DAOImplementations.DAOFactory;
+import com.example.demoCourseWork.Services.LotService;
+import com.example.demoCourseWork.Services.UserService;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +18,13 @@ public class FrontController extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        this.strategySelector = (StrategySelector) config.getServletContext().getAttribute("selector");
+//        strategySelector = (StrategySelector) config.getServletContext().getAttribute("selector");
+        DAOFactory daoFactory = new DAOFactory();
+        this.strategySelector = new StrategySelector(
+                new UserService(daoFactory),
+                new LotService(daoFactory)
+        );
+
     }
 
     private String getPath (HttpServletRequest reqest) {

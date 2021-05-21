@@ -19,7 +19,7 @@ public class LotOfferDAO implements ILotOfferDAO {
 
         for(Lot lot:DataBases.getLots()) {
             if(lot.getId().equals(offer.getLotId())) {
-                lot.getOffers().add(offer);
+                lot.addOffer(offer);
                 return;
             }
         }

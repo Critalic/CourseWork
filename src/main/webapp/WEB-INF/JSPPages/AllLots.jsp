@@ -7,25 +7,89 @@
 </head>
 <body>
     <c:if test="${user==null}" >
-
-            <div class = "bg-gray-100 flex justify-left">
-                <table class="border-separate border border-green-800 ...">
-                    <thead>
-                    <tr>
-                        <th class="border border-green-600 ...">Lot name</th>
-                        <th class="border border-green-600 ...">Info</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="lot" items="${lots}" >
-                        <tr>
-                            <td class="border border-green-600 ..."><c:out value="${lot.getName()}"/></td>
-                            <td class="border border-green-600 ..."><c:out value="${lot.getInfo()}"/></td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+    <div class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 ...">
+        <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+            <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+            <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+                <div class="max-w-md mx-auto">
+                <p class="text-2xl">Active lots</p>
+                    <div class = "bg-gray-100 flex justify-left">
+                        <table class="border-separate border border-green-800 ...">
+                            <thead>
+                            <tr>
+                                <th class="border border-green-600 ...">Lot name</th>
+                                <th class="border border-green-600 ...">Info</th>
+                                <th class="border border-green-600 ...">Owner</th>
+                                <th class="border border-green-600 ...">Number of bids</th>
+                                <th class="border border-green-600 ...">Last offered price </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="lot" items="${lots}" >
+                                <c:if test="${lot.isActive()}" >
+                                    <tr>
+                                        <td class="border border-green-600 ..."><c:out value="${lot.getName()}"/></td>
+                                        <td class="border border-green-600 ..."><c:out value="${lot.getInfo()}"/></td>
+                                        <td class="border border-green-600 ..."><c:out value="${lot.getOwner()}"/></td>
+                                        <td class="border border-green-600 ..."><c:out value="${lot.getOffers().size()}"/></td>
+                                        <td class="border border-green-600 ..."><c:out value="${lot.getPrice()} $"/></td>
+                                    </tr>
+                                </c:if>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </c:if>
+    <c:if test="${user!=null}">
+        <form method="get" action="${pageContext.request.contextPath}/lots/viewLot" >
+        <div class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 ...">
+            <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+                <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+                    <div class="max-w-md mx-auto">
+                        <p class="text-xl">Hello, ${user.getName()}!</p><br>
+                        <p class="text-2xl"><b>Active lots</b></p>
+                        <div class = "bg-gray-100 flex justify-left">
+                            <table class="border-separate border border-green-800 ...">
+                                <thead>
+                                <tr>
+                                    <th class="border border-green-600 ...">Lot name</th>
+                                    <th class="border border-green-600 ...">Info</th>
+                                    <th class="border border-green-600 ...">Owner</th>
+                                    <th class="border border-green-600 ...">Number of bids</th>
+                                    <th class="border border-green-600 ...">Last offered price </th>
+                                    <th class="border border-green-600 ...">Select view</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="lot" items="${lots}" >
+                                    <c:if test="${lot.isActive()}" >
+                                        <tr>
+                                            <td class="border border-green-600 ..."><c:out value="${lot.getName()}"/></td>
+                                            <td class="border border-green-600 ..."><c:out value="${lot.getInfo()}"/></td>
+                                            <td class="border border-green-600 ..."><c:out value="${lot.getOwner()}"/></td>
+                                            <td class="border border-green-600 ..."><c:out value="${lot.getOffers().size()}"/></td>
+                                            <td class="border border-green-600 ..."><c:out value="${lot.getPrice()} $"/></td>
+                                            <td class="border border-green-600 ...">
+                                                <input type="radio" id="myCheckbox" name="lotID" value="${lot.getId()}"/>
+                                            </td>
+                                        </tr>
+                                    </c:if>
+                                </c:forEach>
+                                </tbody>
+                            </table><br/>
+                            <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">View</button>
+                        </div>
+                        <form action="${pageContext.request.contextPath}/lots/mainPage" method="get">
+                            <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Go to main</button>
+                        </form>
+                    </div>
+                </div>
             </div>
     </c:if>
+
 </body>
 </html>

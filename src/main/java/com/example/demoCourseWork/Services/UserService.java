@@ -38,7 +38,7 @@ public class UserService {
 
     public void signUp(String login, String name, String password, String password2)
             throws WrongPasswordException, NoSuchAlgorithmException,
-            IllegalArgumentException, NullPointerException, DBError, InvalidEmailException {
+            IllegalArgumentException, NullPointerException, DBError, InvalidEmailException, AlreadyExistsError {
         login = EmptyValidator.checkIfEmpty(login, "Login");
         name = EmptyValidator.checkIfEmpty(name, "Name");
         password = EmptyValidator.checkIfEmpty(password, "Password");
