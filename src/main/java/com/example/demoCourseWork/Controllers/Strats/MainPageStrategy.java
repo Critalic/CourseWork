@@ -2,6 +2,7 @@ package com.example.demoCourseWork.Controllers.Strats;
 
 import com.example.demoCourseWork.Exceptions.DBError;
 import com.example.demoCourseWork.Services.LotService;
+import com.example.demoCourseWork.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +18,8 @@ public class MainPageStrategy extends SomeStrat{
     @Override
     public void dewGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            String name = (String) request.getSession().getAttribute("user");
-            request.getSession().setAttribute("ownersLots", lotService.getLotsWithOwner(name));
+            User user = (User) request.getSession().getAttribute("user");
+            request.getSession().setAttribute("ownersLots", lotService.getLotsWithOwner(user.getLogin()));
 
         } catch (DBError dbError) {
             dbError.printStackTrace();

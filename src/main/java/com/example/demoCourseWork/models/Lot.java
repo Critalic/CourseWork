@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lot {
-    private String owner;
+    private String ownerName;
+    private String ownerId;
     private String info;
     private double startPrice;
     private List<LotOffer> offers = new ArrayList<>();
@@ -14,26 +15,32 @@ public class Lot {
     private String name;
     private boolean isActive;
 
-    public Lot(String owner, String info, String name, String startPrice ,boolean isActive) {
-        this.owner = owner;
+    public Lot(String ownerName, String ownerId, String info, String name, String startPrice ,boolean isActive) {
+        this.ownerId = ownerId;
+        this.ownerName = ownerName;
         this.info = info;
-        this.id = LotIDGenerator.generateID(name, owner, info);
+        this.id = LotIDGenerator.generateID(name, ownerId, info);
         this.name = name;
         this.isActive = isActive;
         this.startPrice = Double.parseDouble(startPrice);
     }
 
-    public Lot(String owner, String info, String name, double startPrice ,boolean isActive) {
-        this.owner = owner;
+    public Lot(String ownerName, String ownerId, String info, String name, double startPrice ,boolean isActive) {
+        this.ownerId = ownerId;
+        this.ownerName = ownerName;
         this.info = info;
-        this.id = LotIDGenerator.generateID(name, owner, info);
+        this.id = LotIDGenerator.generateID(name, ownerId, info);
         this.name = name;
         this.isActive = isActive;
         this.startPrice = startPrice;
     }
 
     public String getOwner() {
-        return owner;
+        return ownerName;
+    }
+
+    public String getOwnerId() {
+        return  ownerId;
     }
 
     public String getInfo() {
@@ -67,7 +74,7 @@ public class Lot {
     }
 
     public boolean isOwner(String user) {
-        return owner.equals(user);
+        return ownerId.equals(user);
     }
 
     public void setStatus(boolean value) { isActive = value;}

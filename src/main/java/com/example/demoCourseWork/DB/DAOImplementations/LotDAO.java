@@ -50,10 +50,10 @@ public class LotDAO implements ILotDAO {
     }
 
     @Override
-    public List<Lot> getAllWithOwner(String owner) {
+    public List<Lot> getAllWithOwner(String ownerId) {
         ArrayList<Lot> answer = new ArrayList<>();
         for(Lot lot : lots) {
-            if(lot.getName().equals(owner)) answer.add(lot);
+            if(lot.getOwnerId().equals(ownerId)) answer.add(lot);
         }
         return answer;
     }

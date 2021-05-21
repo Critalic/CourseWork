@@ -44,15 +44,16 @@
         </div>
     </c:if>
     <c:if test="${user!=null}">
-        <form method="get" action="${pageContext.request.contextPath}/lots/viewLot" >
+
         <div class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 ...">
             <div class="relative py-3 sm:max-w-xl sm:mx-auto">
                 <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
                 <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-                    <div class="max-w-md mx-auto">
                         <p class="text-xl">Hello, ${user.getName()}!</p><br>
                         <p class="text-2xl"><b>Active lots</b></p>
+                    <form class="max-w-md mx-auto" method="get" action="${pageContext.request.contextPath}/lots/viewLot" >
                         <div class = "bg-gray-100 flex justify-left">
+
                             <table class="border-separate border border-green-800 ...">
                                 <thead>
                                 <tr>
@@ -83,8 +84,9 @@
                             </table><br/>
                             <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">View</button>
                         </div>
+                    </form>
                         <form action="${pageContext.request.contextPath}/lots/mainPage" method="get">
-                            <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Go to main</button>
+                            <p><button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Go to main</button></p>
                         </form>
                     </div>
                 </div>

@@ -20,19 +20,17 @@
                                 <tr>
                                     <th class="border border-green-600 ...">Lot name</th>
                                     <th class="border border-green-600 ...">Info</th>
-                                    <th class="border border-green-600 ...">Owner</th>
                                     <th class="border border-green-600 ...">Number of bids</th>
                                     <th class="border border-green-600 ...">Last offered price </th>
-                                    <th class="border border-green-600 ...">Select view</th>
+                                    <th class="border border-green-600 ...">Edit</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="lot" items="${lots}" >
+                                <c:forEach var="lot" items="${ownersLots}" >
                                     <c:if test="${lot.isActive()}" >
                                         <tr>
                                             <td class="border border-green-600 ..."><c:out value="${lot.getName()}"/></td>
                                             <td class="border border-green-600 ..."><c:out value="${lot.getInfo()}"/></td>
-                                            <td class="border border-green-600 ..."><c:out value="${lot.getOwner()}"/></td>
                                             <td class="border border-green-600 ..."><c:out value="${lot.getOffers().size()}"/></td>
                                             <td class="border border-green-600 ..."><c:out value="${lot.getPrice()} $"/></td>
                                             <td class="border border-green-600 ...">
@@ -43,7 +41,14 @@
                                 </c:forEach>
                                 </tbody>
                             </table><br/>
+                            <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">View</button>
                         </div>
+                        <form action="${pageContext.request.contextPath}/lots/editLot" method="get">
+                            <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">View all lots</button>
+                        </form>
+                        <form action="${pageContext.request.contextPath}/lots/createLot" method="get">
+                            <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Create a new lot</button>
+                        </form>
                     </div>
                 </div>
             </div>
