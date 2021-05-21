@@ -13,7 +13,7 @@
             <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                 <div class="max-w-md mx-auto">
                 <p class="text-2xl">Active lots</p>
-                    <div class = "bg-gray-100 flex justify-left">
+                    <form class = "bg-gray-100 flex justify-left">
                         <table class="border-separate border border-green-800 ...">
                             <thead>
                             <tr>
@@ -38,6 +38,8 @@
                             </c:forEach>
                             </tbody>
                         </table>
+                        </form>
+                        <a href="<c:url value="/index.jsp"/>" class="text-cyan-600 hover:text-cyan-700"> &larr; Back to main</a>
                     </div>
                 </div>
             </div>
@@ -62,7 +64,7 @@
                                     <th class="border border-green-600 ...">Owner</th>
                                     <th class="border border-green-600 ...">Number of bids</th>
                                     <th class="border border-green-600 ...">Last offered price </th>
-                                    <th class="border border-green-600 ...">Select view</th>
+                                    <th class="border border-green-600 ...">Select to view</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -86,7 +88,7 @@
                         </div>
                     </form>
                         <form action="${pageContext.request.contextPath}/lots/mainPage" method="get">
-                            <p><button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Go to main</button></p>
+                            <p><button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Your profile</button></p>
                         </form>
                     </div>
                 </div>

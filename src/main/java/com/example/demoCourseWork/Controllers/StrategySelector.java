@@ -19,15 +19,16 @@ public class StrategySelector {
                 return new LogInStrategy(userService);
             case "/signUp":
                 return new SignUpStrategy(userService);
-//            case "/createLot":
+            case "/createLot":
+                return new NewLotStrategy(lotService);
             case "/mainPage":
                 return new MainPageStrategy(lotService);
             case "/viewLot":
                 return new ViewLotStrategy(lotService);
-//            case "/newOffer":
-//                return new OfferCreateProcessRequestDecorator(lotService);
-//            case "/logout":
-//                return new LogOutProcessRequestDecorator();
+            case "/editLot":
+                return new LotEditingStrategy(lotService);
+            case "/logOut":
+                return new LogOutStrategy(userService, lotService);
 //            case "/setStatus":
 //                return new SetStatusProcessRequestDecorator(lotService);
 //            case "/search":
