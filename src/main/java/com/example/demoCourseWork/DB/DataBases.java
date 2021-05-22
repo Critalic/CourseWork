@@ -34,10 +34,10 @@ public class DataBases {
         LotOffer forrl1 = new LotOffer("admin@gmail.com", "I want your BMW", "37", "", "Admin");
         ArrayList<LotOffer> offers2 = new ArrayList<>();
         offers2.add(forl1);
-        Lot l1 = new Lot("VTLKR" ,"vtlkr@gmail.com", "A set of tea cups", "Tea cups", 10,true);
+        Lot l1 = new Lot("Andrew" ,"vtlkr@gmail.com", "A set of tea cups", "Tea cups", 10,true);
         l1.addOffer(forl1);
         l1.addOffer(forrl1);
-        Lot l2 = new Lot("VTLKR","vtlkr@gmail.com", "A set of tea platters", "Tea platters", 12,true);
+        Lot l2 = new Lot("Andrew","vtlkr@gmail.com", "A set of tea platters", "Tea platters", 12,true);
         users.add(admin);
         users.add(vt);
         lotOffers.add(forl1);
