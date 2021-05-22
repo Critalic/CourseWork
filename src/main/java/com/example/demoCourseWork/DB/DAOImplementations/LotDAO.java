@@ -28,7 +28,7 @@ public class LotDAO implements ILotDAO {
     @Override
     public String getLotOwner(String id) throws NoIDException {
         for(Lot lot : lots) {
-            if(id.equals(lot.getId())) return lot.getOwner();
+            if(id.equals(lot.getId())) return lot.getOwnerId();
         }
         throw new NoIDException("Lot with given ID not found");
     }

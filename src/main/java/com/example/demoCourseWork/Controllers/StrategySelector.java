@@ -29,12 +29,12 @@ public class StrategySelector {
                 return new LotEditingStrategy(lotService);
             case "/logOut":
                 return new LogOutStrategy(userService, lotService);
-//            case "/setStatus":
-//                return new SetStatusProcessRequestDecorator(lotService);
+            case "/changeStatus":
+                return new ChangeStatusStrategy(lotService);
 //            case "/search":
 //                return new TenderWithNameProcessRequestDecorator(lotService);
-//            case "/deleteLot":
-//                return new DeleteProcessRequestDecorator(lotService);
+            case "/deleteLot":
+                return new DeleteLotStrategy(lotService);
             case "/makeOffer":
                 return new MakeOfferStrategy(lotService);
             default:

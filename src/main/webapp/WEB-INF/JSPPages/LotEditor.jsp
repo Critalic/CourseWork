@@ -1,13 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: START
-  Date: 21.05.2021
-  Time: 19:32
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <title>Lot Editing</title>
 </head>
 <body>
@@ -18,27 +13,22 @@
                 <div class="max-w-md mx-auto">
                     <div class="divide-y divide-gray-200">
                         <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                            <p><h1><b>You're in a lot editing mode</p> <p>Please fill in the following fields</p></b></h1>
+                            <p class="text-xl"><b>Name: </b>${lot.getName()}</p>
+                            <p class="text-xl"><b>Description: </b></p>
+                            <p class="text-base">${lot.getInfo()}</p>
+                            <p class="test-xl"><b>Current value: </b> ${lot.getPrice()} </p>
+                            <p class="test-xl"><b>Current status: </b> ${lot.isActive()} </p>
                                 <ul class="list-disc space-y-2">
-                                    <form action="${pageContext.request.contextPath}/lots/deleteLot" method="post">
-                                    <li> What's your e-mail?
-                                        <div class="mb-3 pt-0">
-                                            <input type="text" name = "email" class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
-                                        </div>
-                                    </li>
-                                    <li> Enter your password
-                                        <div class="mb-3 pt-0">
-                                            <input type="password"  name = "password1" class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
-                                        </div>
-                                    </li>
-                                    <li> Re-enter your password
-                                        <div class="mb-3 pt-0">
-                                            <input type="password"  name = "password2" class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"/>
-                                        </div>
-                                    </li>
+                                    <form action="${pageContext.request.contextPath}/lots/deleteLot" method="get">
+                                        <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Delete this lot</button>
+                                    </form>
+                                    <form action="${pageContext.request.contextPath}/lots/changeStatus" method="get">
+                                        <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Change status</button>
+                                    </form>
+                                    <form action="${pageContext.request.contextPath}/lots/generateURLForLot" method="get">
+                                        <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Generate URL</button>
+                                    </form>
                                 </ul>
-                                <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Sign up</button>
-                            </form>
                         </div>
                     </div>
                 </div>

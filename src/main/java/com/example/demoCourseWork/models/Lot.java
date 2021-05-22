@@ -70,6 +70,7 @@ public class Lot {
         for(LotOffer lotOffer : this.getOffers()) {
             if(lotOffer.getMoney()>price) price = lotOffer.getMoney();
         }
+        startPrice= price;
         return price;
     }
 
