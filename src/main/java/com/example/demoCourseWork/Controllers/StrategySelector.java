@@ -31,8 +31,8 @@ public class StrategySelector {
                 return new LogOutStrategy(userService, lotService);
             case "/changeStatus":
                 return new ChangeStatusStrategy(lotService);
-//            case "/search":
-//                return new TenderWithNameProcessRequestDecorator(lotService);
+            case "/searchLot":
+                return new SearchLotStrategy(lotService);
             case "/deleteLot":
                 return new DeleteLotStrategy(lotService);
             case "/makeOffer":

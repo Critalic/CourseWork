@@ -39,6 +39,9 @@
                             </tbody>
                         </table>
                         </form>
+                    <form method="get" action="${pageContext.request.contextPath}/lots/searchLot">
+                        <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Search lot</button>
+                    </form>
                         <a href="<c:url value="/index.jsp"/>" class="text-cyan-600 hover:text-cyan-700"> &larr; Back to main</a>
                     </div>
                 </div>
@@ -90,6 +93,9 @@
                         <form action="${pageContext.request.contextPath}/lots/mainPage" method="get">
                             <p><button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Your profile</button></p>
                         </form>
+                    <form method="get" action="${pageContext.request.contextPath}/lots/searchLot">
+                        <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Search lot</button>
+                    </form>
                     </div>
                 </div>
             </div>
