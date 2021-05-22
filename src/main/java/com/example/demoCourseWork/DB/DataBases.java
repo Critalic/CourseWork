@@ -30,8 +30,8 @@ public class DataBases {
     private static void addDefault () {
         User admin = new User("Admin", "admin@gmail.com", "1234");
         User vt = new User("VTLKR", "vtlkr@gmail.com", "1234");
-        LotOffer forl1 = new LotOffer("admin@gmail.com", "I want your BMW", "35", "1");
-        LotOffer forrl1 = new LotOffer("admin@gmail.com", "I want your BMW", "37", "");
+        LotOffer forl1 = new LotOffer("admin@gmail.com", "I want your BMW", "35", "1", "Admin");
+        LotOffer forrl1 = new LotOffer("admin@gmail.com", "I want your BMW", "37", "", "Admin");
         ArrayList<LotOffer> offers2 = new ArrayList<>();
         offers2.add(forl1);
         Lot l1 = new Lot("VTLKR" ,"vtlkr@gmail.com", "A set of tea cups", "Tea cups", 10,true);

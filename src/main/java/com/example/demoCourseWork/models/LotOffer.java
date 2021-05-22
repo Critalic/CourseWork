@@ -1,30 +1,34 @@
 package com.example.demoCourseWork.models;
 
 public class LotOffer {
-    private String owner;
-    private String text;
-    private int cost;
-    private String lotId;
+    private final String owner;
+    private final String text;
+    private final int cost;
+    private final String lotId;
+    private String ownerName;
 
-    public LotOffer(String owner, String text, int cost, String lotId) {
+    public LotOffer(String owner, String text, int cost, String lotId, String ownerName) {
         this.owner = owner;
         this.text = text;
         this.cost = cost;
         this.lotId = lotId;
+        this.ownerName = ownerName;
     }
 
-    public LotOffer(String owner, String text, Long cost, String lotId) {
+    public LotOffer(String owner, String text, Long cost, String lotId, String ownerName) {
         this.owner = owner;
         this.text = text;
         this.cost = Math.toIntExact(cost);
         this.lotId = lotId;
+        this.ownerName = ownerName;
     }
 
-    public LotOffer(String owner, String text, String cost, String lotId) {
+    public LotOffer(String owner, String text, String cost, String lotId, String ownerName) {
         this.owner = owner;
         this.text = text;
         this.cost = Integer.parseInt(cost);
         this.lotId = lotId;
+        this.ownerName = ownerName;
     }
 
     public String getLotId() {
@@ -42,6 +46,8 @@ public class LotOffer {
     public int getMoney() {
         return cost;
     }
+
+    public String getOwnerName() {return ownerName;};
 
     @Override
     public boolean equals(Object o) {

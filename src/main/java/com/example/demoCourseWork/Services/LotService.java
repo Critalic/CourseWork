@@ -10,6 +10,7 @@ import com.example.demoCourseWork.models.Lot;
 import com.example.demoCourseWork.models.LotOffer;
 
 import java.util.List;
+import java.util.UUID;
 
 public class LotService {
     private DAOFactory daoFactory;
@@ -54,6 +55,10 @@ public class LotService {
         }
     }
 
+    public String generateURL () {
+        return  UUID.randomUUID().toString();
+    }
+
     public void createNewLot(String ownerName, String name, String ownerId, String about, String startPrice)
             throws IllegalArgumentException, DBError {
         name = EmptyValidator.checkIfEmpty(name, "Name");
@@ -79,6 +84,7 @@ public class LotService {
             throws IllegalArgumentException, NoIDException, DBError {
         text = EmptyValidator.checkIfEmpty(text, "Text");
         money = EmptyValidator.checkIfEmpty(money, "Money");
+        String ownerName = this.daoFactory.getUserDao().getUser(userLogin).getName();
 
         try {
             Integer.parseInt(money);
@@ -94,6 +100,6 @@ public class LotService {
             throw new NoIDException();
         }
 
-        daoFactory.getLotOfferDao().createLotOffer(new LotOffer(userLogin, text, money, lotId));
+        daoFactory.getLotOfferDao().createLotOffer(new LotOffer(userLogin, text, money, lotId, ownerName));
     }
 }

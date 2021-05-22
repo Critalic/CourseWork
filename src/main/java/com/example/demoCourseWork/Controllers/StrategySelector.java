@@ -37,6 +37,8 @@ public class StrategySelector {
                 return new DeleteLotStrategy(lotService);
             case "/makeOffer":
                 return new MakeOfferStrategy(lotService);
+            case "/generateURL":
+                return new URLGeneratorStrategy(lotService);
             default:
                 return new ShowLotsStrategy(lotService);
         }

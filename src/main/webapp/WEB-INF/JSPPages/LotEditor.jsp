@@ -16,8 +16,30 @@
                             <p class="text-xl"><b>Name: </b>${lot.getName()}</p>
                             <p class="text-xl"><b>Description: </b></p>
                             <p class="text-base">${lot.getInfo()}</p>
-                            <p class="test-xl"><b>Current value: </b> ${lot.getPrice()} </p>
-                            <p class="test-xl"><b>Current status: </b> ${lot.isActive()} </p>
+                            <p class="test-xl"><b>Current value: </b> ${lot.getPrice()} $</p>
+                            <p class="test-xl"><b>Is active: </b> ${lot.isActive()} </p>
+                            <p class="test-xl"><b>Bids: </b></p>
+                            <c:if test="${lot.getOffers().size()!=0}" >
+                            <table class="border-separate border border-green-800 ...">
+                                <thead>
+                                <tr>
+                                    <th class="border border-green-600 ...">Bidder</th>
+                                    <th class="border border-green-600 ...">Info</th>
+                                    <th class="border border-green-600 ...">Offer</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="offer" items="${lot.getOffers()}" >
+                                        <tr>
+                                            <td class="border border-green-600 ..."><c:out value="${offer.getOwnerName()}"/></td>
+                                            <td class="border border-green-600 ..."><c:out value="${offer.getText()}"/></td>
+                                            <td class="border border-green-600 ..."><c:out value="${offer.getMoney()} $"/></td>
+                                        </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                            </c:if>
+                            <c:if test="${lot.getOffers().size()==0}" ><p class="test-base">No bids yet</p> </c:if>
                                 <ul class="list-disc space-y-2">
                                     <form action="${pageContext.request.contextPath}/lots/deleteLot" method="get">
                                         <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Delete this lot</button>

@@ -28,7 +28,6 @@
                             </thead>
                             <tbody>
                             <c:forEach var="lot" items="${ownersLots}" >
-                                <c:if test="${lot.isActive()}" >
                                     <tr>
                                         <td class="border border-green-600 ..."><c:out value="${lot.getName()}"/></td>
                                         <td class="border border-green-600 ..."><c:out value="${lot.getInfo()}"/></td>
@@ -39,11 +38,10 @@
                                             <input type="radio" id="myCheckbox" name="lotID" value="${lot.getId()}"/>
                                         </td>
                                     </tr>
-                                </c:if>
                             </c:forEach>
                             </tbody>
                         </table><br/>
-                        <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">Edit</button>
+                        <button class = "bg-blue-300 text-x1 font-semibold px-4 py-1 rounded hover:bg-blue-800 hover:text-white " type="submit">View details</button>
                     </div>
                 </form>
                 <form action="${pageContext.request.contextPath}/lots/viewAll" method="get">
